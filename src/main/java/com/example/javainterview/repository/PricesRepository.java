@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public interface PricesRepository extends JpaRepository<Prices, Long> {
@@ -17,7 +16,7 @@ public interface PricesRepository extends JpaRepository<Prices, Long> {
             "WHERE :applicationDate BETWEEN start_date AND end_date\n" +
             "AND p.product_id=:productId\n" +
             "AND p.brand.id=:brandId")
-    List<Optional<Prices>> findAllWithoutPriorityCheck(@Param("applicationDate") Date applicationDate,
+    List<Prices> findAllWithoutPriorityCheck(@Param("applicationDate") Date applicationDate,
                                                        @Param("productId") int productId,
-                                                       @Param("brandId") Long brandId);
+                                                       @Param("brandId") long brandId);
 }

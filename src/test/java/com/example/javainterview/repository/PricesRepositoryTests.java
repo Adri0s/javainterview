@@ -9,7 +9,6 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
@@ -32,7 +31,8 @@ public class PricesRepositoryTests {
         Long brandId = 1L;
 
         // find
-        List<Optional<Prices>> allWithoutPriorityCheck = pricesRepository.findAllWithoutPriorityCheck(applicationDate, productId, brandId);
+        List<Prices> allWithoutPriorityCheck =
+                pricesRepository.findAllWithoutPriorityCheck(applicationDate, productId, brandId);
 
         // then
         assertThat(allWithoutPriorityCheck).isNotNull();
